@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Signs Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen active">
+        <div class="container">
+            <header class="app-header">
+                <h1>⚾ Baseball Signs</h1>
+                <p>Master the game with flashcard practice</p>
+            </header>
+            
+            <div class="menu-grid">
+                <button class="menu-btn" onclick="showStudyMode()">
+                    <span class="menu-icon">📚</span>
+                    <span class="menu-text">Study All Cards</span>
+                </button>
+                
+                <button class="menu-btn" onclick="showQuizMode()">
+                    <span class="menu-icon">🧠</span>
+                    <span class="menu-text">Quiz Mode</span>
+                </button>
+                
+                <button class="menu-btn" onclick="showCategories()">
+                    <span class="menu-icon">📋</span>
+                    <span class="menu-text">Browse Categories</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Screen -->
+    <div id="categories-screen" class="screen">
+        <div class="container">
+            <header class="screen-header">
+                <button class="back-btn" onclick="showMainMenu()">← Back</button>
+                <h2>Choose Category</h2>
+            </header>
+            
+            <div class="category-list">
+                <button class="category-btn" onclick="startStudyMode('offensive_signs')">
+                    <span class="category-title">Offensive Signs</span>
+                    <span class="category-count" id="offensive-count">0 cards</span>
+                </button>
+                
+                <button class="category-btn" onclick="startStudyMode('defensive_pitching_signs')">
+                    <span class="category-title">Defensive/Pitching Signs</span>
+                    <span class="category-count" id="defensive-count">0 cards</span>
+                </button>
+                
+                <button class="category-btn" onclick="startStudyMode('bunt_defense')">
+                    <span class="category-title">Bunt Defense</span>
+                    <span class="category-count" id="bunt-count">0 cards</span>
+                </button>
+                
+                <button class="category-btn" onclick="startStudyMode('shortstop_coverage')">
+                    <span class="category-title">Shortstop Coverage</span>
+                    <span class="category-count" id="shortstop-count">0 cards</span>
+                </button>
+                
+                <button class="category-btn" onclick="startStudyMode('first_third_defense')">
+                    <span class="category-title">First and Third Defense</span>
+                    <span class="category-count" id="first-third-count">0 cards</span>
+                </button>
+                
+                <button class="category-btn" onclick="startStudyMode('player_audibles')">
+                    <span class="category-title">Player Audibles</span>
+                    <span class="category-count" id="audibles-count">0 cards</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Mode Screen -->
+    <div id="study-screen" class="screen">
+        <div class="container">
+            <header class="screen-header">
+                <button class="back-btn" onclick="showMainMenu()">← Back</button>
+                <div class="progress-info">
+                    <span id="card-counter">1 / 10</span>
+                </div>
+            </header>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="study-progress"></div>
+            </div>
+            
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-front">
+                        <div class="card-content">
+                            <span class="card-label">Sign</span>
+                            <p id="card-front-text">Tap to start studying</p>
+                        </div>
+                    </div>
+                    <div class="flashcard-back">
+                        <div class="card-content">
+                            <span class="card-label">Action</span>
+                            <p id="card-back-text">Action will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-controls">
+                <button class="nav-btn" id="prev-btn" onclick="previousCard()">
+                    <span>← Previous</span>
+                </button>
+                <button class="flip-btn" onclick="flipCard()">
+                    <span id="flip-text">Flip Card</span>
+                </button>
+                <button class="nav-btn" id="next-btn" onclick="nextCard()">
+                    <span>Next →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Mode Screen -->
+    <div id="quiz-screen" class="screen">
+        <div class="container">
+            <header class="screen-header">
+                <button class="back-btn" onclick="showMainMenu()">← Back</button>
+                <div class="quiz-info">
+                    <span id="quiz-counter">Question 1 / 10</span>
+                    <span id="quiz-score">Score: 0</span>
+                </div>
+            </header>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="quiz-progress"></div>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="question-card">
+                    <h3 id="question-text">What does this sign mean?</h3>
+                    <p class="question-sign" id="question-sign">Touch the belt</p>
+                </div>
+                
+                <div class="answer-options" id="answer-options">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+                
+                <button class="quiz-next-btn hidden" id="quiz-next-btn" onclick="nextQuestion()">
+                    Next Question
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Results Screen -->
+    <div id="quiz-results" class="screen">
+        <div class="container">
+            <div class="results-card">
+                <h2>Quiz Complete!</h2>
+                <div class="final-score">
+                    <span class="score-label">Your Score</span>
+                    <span class="score-value" id="final-score">8/10</span>
+                    <span class="score-percentage" id="score-percentage">80%</span>
+                </div>
+                
+                <div class="results-actions">
+                    <button class="btn btn--primary" onclick="startQuiz()">Try Again</button>
+                    <button class="btn btn--secondary" onclick="showMainMenu()">Main Menu</button>
+                </div>
+                
+                <div class="wrong-answers" id="wrong-answers-section">
+                    <h3>Review Missed Questions:</h3>
+                    <div id="wrong-answers-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
