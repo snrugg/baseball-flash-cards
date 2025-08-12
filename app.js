@@ -3,7 +3,8 @@ const categoryData = {
     defensive_pitching_signs: "(Defense, Pitching)",
     bunt_defense: "(Defense, Bunts)",
     shortstop_coverage: "(Defense, Shortstop)",
-    first_third_defense: "(Defense, First and Third)",
+    hot_plays: "(Defense, First and Third Hot)",
+    cold_plays: "(Defense, First and Third Cold)",
     player_audibles: "(Defense, Audibles)"
 }; 
 // Baseball signs data
@@ -32,31 +33,31 @@ const baseballData = {
     {indicator: "Tap the nose", action: "Pick to lead base"},
     {indicator: "Tap the ear (1x = first, 2x = second, 3x = third)", action: "Timing picks"}
   ],
-  bunt_defense: [
-    {indicator: "1 play", action: "Return to the pitcher, pitcher checks the runner at 3rd"},
-    {indicator: "2 play", action: "Catcher will throw and look for play at third"},
-    {indicator: "4 play", action: "2nd baseman cuts the ball off and checks the 3rd base runner"},
-    {indicator: "5 play", action: "Immediate back pick to 3rd base"},
-    {indicator: "6 play", action: "SS cuts the ball off and checks the 3rd base runner"}
-  ],
   shortstop_coverage: [
     {indicator: "Top of the hat", action: "Quick pitch, zero looks"},
     {indicator: "Chest", action: "1 look"},
     {indicator: "Jersey", action: "2 looks"},
     {indicator: "Belt", action: "3 looks"}
   ],
-  first_third_defense: [
-    {indicator: "Hot strategy", action: "Keep the 3rd base runner from scoring. Priority is to get him out if possible or keep him at third."},
-    {indicator: "Hot 215", action: "Last number will indicate the play"},
-    {indicator: "15 or 51", action: "3rd base and pitcher covering, 1st base stays, 2nd covers 2nd, SS covers 3rd"},
-    {indicator: "13 or 31", action: "1st base and pitcher covering, 3rd stays home, 2nd covers 1st, SS covers 2nd"},
-    {indicator: "135", action: "Play is at home, all three are crashing, this is a do or die situation"}
-  ],
   player_audibles: [
     {indicator: "Here we go (Jersey number), let's just play catch", action: "Pick play"},
     {indicator: "Just play catch (Jersey number)", action: "Pick play"},
-    {indicator: "4 play", action: "SS fake cuts the ball off, throw goes through to 2nd baseman covering"},
-    {indicator: "6 play", action: "2nd base fake cuts the ball, throw goes through to 2nd base (SS is covering)"}
+  ],
+  hot_plays: [
+    {indicator: "Hot (number ending in 1)", action: "Return to the pitcher, pitcher checks the runner at 3rd"},
+    {indicator: "Hot (number ending in 2)", action: "Catcher will throw and look for play at third"},
+    {indicator: "Hot (number ending in 4)", action: "2nd baseman cuts the ball off and checks the 3rd base runner"},
+    {indicator: "Hot (number ending in 5)", action: "Immediate back pick to 3rd base"},
+    {indicator: "Hot (number ending in 6)", action: "SS cuts the ball off and checks the 3rd base runner"}
+  ],
+  cold_plays: [
+      {indicator: "Cold (number ending in 4)", action: "SS fake cuts the ball off, throw goes through to 2nd baseman covering"},
+      {indicator: "Cold (number ending in 6)", action: "2nd base fake cuts the ball, throw goes through to 2nd base (SS is covering)"}
+  ],
+  bunt_defense: [
+    {indicator: "15 or 51", action: "3rd base and pitcher covering, 1st base stays, 2nd covers 2nd, SS covers 3rd"},
+    {indicator: "13 or 31", action: "1st base and pitcher covering, 3rd stays home, 2nd covers 1st, SS covers 2nd"},
+    {indicator: "135", action: "Play is at home, all three are crashing, this is a do or die situation"}
   ]
 };
 
