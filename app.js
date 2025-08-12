@@ -41,7 +41,7 @@ const baseballData = {
   ],
   player_audibles: [
     {indicator: "Here we go (Jersey number), let's just play catch", action: "Pick play"},
-    {indicator: "Just play catch (Jersey number)", action: "Pick play"},
+    {indicator: "Just play catch (Jersey number)", action: "Pick play"}
   ],
   hot_plays: [
     {indicator: "Hot (number ending in 1)", action: "Return to the pitcher, pitcher checks the runner at 3rd"},
@@ -351,7 +351,8 @@ function updateCategoryCounts() {
   document.getElementById('defensive-count').textContent = `${baseballData.defensive_pitching_signs.length} cards`;
   document.getElementById('bunt-count').textContent = `${baseballData.bunt_defense.length} cards`;
   document.getElementById('shortstop-count').textContent = `${baseballData.shortstop_coverage.length} cards`;
-  document.getElementById('first-third-count').textContent = `${baseballData.first_third_defense.length} cards`;
+  document.getElementById('hot-plays-count').textContent = `${baseballData.hot_plays.length} cards`;
+  document.getElementById('cold-plays-count').textContent = `${baseballData.cold_plays.length} cards`;
   document.getElementById('audibles-count').textContent = `${baseballData.player_audibles.length} cards`;
 }
 
